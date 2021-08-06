@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
+
 @Entity(tableName = "groceries_table")
 public class Groceries {
 
@@ -65,6 +67,7 @@ public class Groceries {
 
     //override with toString
 
+    @NotNull
     @Override
     public String toString() {
         return "Groceries{" +
