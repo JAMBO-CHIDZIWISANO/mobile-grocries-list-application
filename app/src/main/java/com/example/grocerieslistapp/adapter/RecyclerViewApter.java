@@ -46,10 +46,10 @@ public class RecyclerViewApter  extends RecyclerView.Adapter<RecyclerViewApter.V
 
         Groceries groceries = groceriesList.get(position);
 
-        //holder.groceries.setText( (int) groceries.getId() );
+        //holder.groceries.setText( String.valueOf(groceries.getId()) );
         holder.groceries.setText( groceries.getItems() );
-       //holder.price.setText( (int) groceries.getPrice() );
-        //holder.quantity.setText( (int) groceries.getQuantity() );
+        holder.price.setText( String.valueOf( groceries.getPrice() ) );
+        holder.quantity.setText( String.valueOf(groceries.getQuantity()) );
     }
 
     @Override
@@ -60,7 +60,7 @@ public class RecyclerViewApter  extends RecyclerView.Adapter<RecyclerViewApter.V
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public AppCompatTextView id;
+        //public AppCompatTextView id;
         public AppCompatTextView groceries;
         public AppCompatTextView price;
         public AppCompatTextView quantity;
@@ -73,7 +73,7 @@ public class RecyclerViewApter  extends RecyclerView.Adapter<RecyclerViewApter.V
             groceries = itemView.findViewById( R.id.grocery_name );
             price = itemView.findViewById( R.id.price );
             quantity = itemView.findViewById( R.id.quantity );
-            id = itemView.findViewById( R.id.grocery_id );
+            //id = itemView.findViewById( R.id.grocery_id );
         }
     }
 }
