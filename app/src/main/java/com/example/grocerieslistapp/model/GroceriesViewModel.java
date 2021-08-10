@@ -17,11 +17,13 @@ public class GroceriesViewModel extends AndroidViewModel {
     public static GroceryRepository repository;
     public final LiveData<List<Groceries>> allGroceries;
 
+
     public GroceriesViewModel(@NonNull @NotNull Application application) {
         super( application );
 
         repository = new GroceryRepository( application );
         allGroceries = repository.getAllGroceries();
+
 
     }
 
@@ -33,6 +35,7 @@ public class GroceriesViewModel extends AndroidViewModel {
     public static void insert(Groceries groceries) {
 
         repository.insert( groceries );
+
     }
 
     public LiveData<Groceries> get(long id) {
@@ -49,5 +52,12 @@ public class GroceriesViewModel extends AndroidViewModel {
 
         repository.delete( groceries );
     }
+
+    public static void deleteAll(){
+        repository.deleteAll();
+    }
+
+
+
 
 }

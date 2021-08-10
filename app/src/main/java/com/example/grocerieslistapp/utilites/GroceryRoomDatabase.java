@@ -43,7 +43,7 @@ public abstract class GroceryRoomDatabase extends RoomDatabase {
                 }
             };
 
-    public static GroceryRoomDatabase getDatabase(final Context context){
+    public static GroceryRoomDatabase getDatabase (Context context){
         if(INSTANCE==null) {
             synchronized (GroceryRoomDatabase.class) {
                 if (INSTANCE==null) {

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/addform">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/itemName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:boxBackgroundColor="@color/design_default_color_surface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/editItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="grocery name"
+            android:hint="@string/grocery_name"
+            android:inputType="text"
+            android:textColor="#2CD306"
+            android:textColorHint="#2CD306" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:boxBackgroundColor="@color/design_default_color_surface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemName">
+
+        <EditText
+
+            android:id="@+id/editPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="add price"
+            android:hint="@string/add_price"
+            android:inputType="numberDecimal"
+            android:textColor="#2CD306"
+            android:textColorHint="#2CD306"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtQuantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:boxBackgroundColor="@color/design_default_color_surface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price">
+
+        <EditText
+            android:id="@+id/editQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="add quantity"
+            android:hint="@string/add_quantity"
+            android:inputType="number"
+            android:textColor="#2CD306"
+            android:textColorHint="#2CD306"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/savebtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/green"
+        android:text="@string/save"
+        android:textColor="@color/design_default_color_surface"
+        app:backgroundTint="@color/green"
+        app:layout_constraintEnd_toEndOf="@+id/edtQuantity"
+        app:layout_constraintStart_toStartOf="@+id/edtQuantity"
+        app:layout_constraintTop_toBottomOf="@+id/edtQuantity" />
+</androidx.constraintlayout.widget.ConstraintLayout>

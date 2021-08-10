@@ -43,4 +43,10 @@ public class GroceryRepository {
         GroceryRoomDatabase.databaseWriterExecutor.execute(
                 ()-> groceriesDao.delete( groceries ) );
     }
+   public void deleteAll() {
+        GroceryRoomDatabase.databaseWriterExecutor.execute(
+                ()-> groceriesDao.deleteAll());
+
+   }
+
 }

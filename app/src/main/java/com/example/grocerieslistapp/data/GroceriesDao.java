@@ -1,7 +1,6 @@
 package com.example.grocerieslistapp.data;
 
 
-
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -15,6 +14,7 @@ import java.util.List;
 
 @Dao
 public interface GroceriesDao {
+
 
     //insert groceries
     @Insert
@@ -40,4 +40,7 @@ public interface GroceriesDao {
     //delete a grocery
     @Delete
     void delete(Groceries groceries);
+
+   // @Query("SELECT Item_id, Item_price, items_quantity,  Item_price * items_quantity FROM groceries_table ")
+
 }

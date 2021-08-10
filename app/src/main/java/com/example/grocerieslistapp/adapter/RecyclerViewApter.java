@@ -1,6 +1,7 @@
 package com.example.grocerieslistapp.adapter;
 
 
+
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -24,8 +25,10 @@ public class RecyclerViewApter  extends RecyclerView.Adapter<RecyclerViewApter.V
 
 
 
-    public RecyclerViewApter(List<Groceries> groceriesList ) {
+    public RecyclerViewApter(List<Groceries> groceriesList) {
         this.groceriesList = groceriesList;
+
+
 
     }
 
@@ -50,6 +53,10 @@ public class RecyclerViewApter  extends RecyclerView.Adapter<RecyclerViewApter.V
         holder.groceries.setText( groceries.getItems() );
         holder.price.setText( String.valueOf( groceries.getPrice() ) );
         holder.quantity.setText( String.valueOf(groceries.getQuantity()) );
+
+        holder.totalItem.setText(  String.valueOf(groceries.getPrice() * groceries.getQuantity()  ));
+
+
     }
 
     @Override
@@ -58,12 +65,20 @@ public class RecyclerViewApter  extends RecyclerView.Adapter<RecyclerViewApter.V
         return groceriesList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public Groceries getGroceriesAt(int position){
+        return groceriesList.get( position );
+    }
 
-        //public AppCompatTextView id;
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+
+
         public AppCompatTextView groceries;
         public AppCompatTextView price;
         public AppCompatTextView quantity;
+        public AppCompatTextView totalItem;
+
 
 
         public ViewHolder(@NonNull @NotNull View itemView) {
@@ -73,7 +88,18 @@ public class RecyclerViewApter  extends RecyclerView.Adapter<RecyclerViewApter.V
             groceries = itemView.findViewById( R.id.grocery_name );
             price = itemView.findViewById( R.id.price );
             quantity = itemView.findViewById( R.id.quantity );
-            //id = itemView.findViewById( R.id.grocery_id );
+
+            totalItem = itemView.findViewById( R.id.totals );
+
+
+
+
+
         }
+
+
+
     }
-}
+    }
+
+
