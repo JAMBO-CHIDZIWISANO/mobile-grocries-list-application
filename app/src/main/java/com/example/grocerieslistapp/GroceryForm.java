@@ -71,6 +71,11 @@ public class GroceryForm extends BottomSheetDialogFragment {
 
                 GroceriesViewModel.insert( groceries );
 
+                enterItems.setText( "" );
+                enterPrices.setText( "" );
+                enterQuantity.setText( "" );
+
+                //dismiss();
                 Toast.makeText( requireActivity(), "successfully saved", Toast.LENGTH_SHORT ).show();
 
             } else {
