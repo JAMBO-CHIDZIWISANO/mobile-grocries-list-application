@@ -16,17 +16,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.grocerieslistapp.data.GroceryRepository;
+//import com.example.grocerieslistapp.model.Groceries;
+//import com.example.grocerieslistapp.model.GroceriesViewModel;
+
 import com.example.grocerieslistapp.model.Groceries;
 import com.example.grocerieslistapp.model.GroceriesViewModel;
-import com.example.grocerieslistapp.model.SharedViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddGroceries#} factory method to
- * create an instance of this fragment.
- */
-public class AddGroceries extends BottomSheetDialogFragment {
+public class GroceryForm extends BottomSheetDialogFragment {
 
     //variable
     private EditText enterItems;
@@ -34,9 +31,8 @@ public class AddGroceries extends BottomSheetDialogFragment {
     private EditText enterQuantity;
     private Button savebtn;
 
-    private SharedViewModel sharedViewModel;
 
-    public AddGroceries() {
+    public GroceryForm() {
         // Required empty public constructor
     }
 
@@ -48,38 +44,37 @@ public class AddGroceries extends BottomSheetDialogFragment {
             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate( R.layout.groceries_form, container, false );
+        View view = inflater.inflate( R.layout.fragment_grocery_form, container, false );
 
         enterItems = view.findViewById( R.id.editItem );
         enterPrices = view.findViewById( R.id.editPrice );
         enterQuantity = view.findViewById( R.id.editQuantity );
         savebtn = view.findViewById( R.id.savebtn );
 
-    return view;
+        return view;
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        sharedViewModel = new ViewModelProvider( requireActivity() )
-                .get( SharedViewModel.class );
-        if (sharedViewModel.getSelectedItem().getValue()!=null) {
-            Groceries groceries = sharedViewModel.getSelectedItem().getValue();
-            Log.d( "MY", "onViewCreated: " + groceries.getItems() );
-        }
+
 
         savebtn.setOnClickListener( v -> {
 
-
-
+            //getting text value from edittext
             String grocery = enterItems.getText().toString().trim();
-            double prices = Double.parseDouble( enterPrices.getText().toString().trim() );
-            long qty = Long.parseLong( enterQuantity.getText().toString().trim() );
+            String prices = enterPrices.getText().toString().trim();
+            String quantity =  enterQuantity.getText().toString().trim();
 
-            if (!TextUtils.isEmpty( grocery )){
+            if (!grocery.equals( "" )&&!prices.equals( "" )&&!quantity.equals( "" )){
 
-                Groceries groceries = new Groceries(grocery, prices, qty);
+                Groceries groceries = new Groceries(grocery, Float.parseFloat( prices ),Long.parseLong( quantity ));
 
                 GroceriesViewModel.insert( groceries );
+
+                Toast.makeText( requireActivity(), "successfully saved", Toast.LENGTH_SHORT ).show();
+
+            } else {
+                Toast.makeText( requireActivity(), "Incomplete information", Toast.LENGTH_LONG ).show();
             }
 
 

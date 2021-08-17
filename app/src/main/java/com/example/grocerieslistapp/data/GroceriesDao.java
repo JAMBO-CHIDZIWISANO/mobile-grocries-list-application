@@ -12,35 +12,38 @@ import com.example.grocerieslistapp.model.Groceries;
 
 import java.util.List;
 
+//annotation for Dao class
 @Dao
 public interface GroceriesDao {
 
 
-    //insert groceries
+    //insert groceries into database
     @Insert
     void insertGroceries(Groceries groceries);
 
-    //delete all groceries
+    //delete all groceries in database
     @Query( "DELETE FROM groceries_table" )
     void deleteAll();
 
-    //get list of groceries
+    //get the list of all groceries from database
     @Query("SELECT * FROM groceries_table")
     LiveData<List<Groceries>> getGroceries();
 
-    //get a grocery
+    //get a specific grocery from database
     @Query( "SELECT * FROM groceries_table " +
             "WHERE groceries_table.Item_id ==:id" )
     LiveData<Groceries> get(long id);
 
-    //update a grocery
+    //update groceries in database
     @Update
     void update(Groceries groceries);
 
-    //delete a grocery
+    //delete specific grocery in database
     @Delete
     void delete(Groceries groceries);
 
-   // @Query("SELECT Item_id, Item_price, items_quantity,  Item_price * items_quantity FROM groceries_table ")
+
+    //@Query( "SELECT  SUM(Item_price * items_quantity) FROM groceries_table AS amount;" )
+    //void totalAmount( Groceries groceries);
 
 }

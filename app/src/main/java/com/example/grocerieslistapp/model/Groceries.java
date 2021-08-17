@@ -1,32 +1,37 @@
 package com.example.grocerieslistapp.model;
 
-import android.widget.EditText;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
 
+// below line is for setting table name.
 @Entity(tableName = "groceries_table")
 public class Groceries {
 
-    @ColumnInfo(name = "Item_id")
+    //auto increment for each id
     @PrimaryKey(autoGenerate = true)
+    //id column name
+    @ColumnInfo(name = "Item_id")
     public long id;
 
+    //variable for grocery name
     @ColumnInfo(name = "Item_name")
     public String items;
 
+    ////variable for grocery price
     @ColumnInfo(name = "Item_price")
-    public double price;
+    public float price;
 
+    ////variable for grocery quantity
     @ColumnInfo(name = "items_quantity")
     public long quantity;
 
-    //constructor
+    //constructor of the class, id is auto-increment hence are not passed
+    public Groceries(String items, float price, long quantity) {
+        //passing the class variables
 
-    public Groceries(String items, double price, long quantity) {
         this.items = items;
         this.price = price;
         this.quantity = quantity;
@@ -35,7 +40,6 @@ public class Groceries {
 
 
     //getters and setters
-
     public long getId() {
         return id;
     }
@@ -44,10 +48,7 @@ public class Groceries {
         this.id = id;
     }
 
-    public String getItems() {
-        
-        return items;
-    }
+    public String getItems() { return items; }
 
     public void setItems(String items) {
         this.items = items;
@@ -57,7 +58,7 @@ public class Groceries {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -70,7 +71,6 @@ public class Groceries {
     }
 
     //override with toString
-
     @NotNull
     @Override
     public String toString() {

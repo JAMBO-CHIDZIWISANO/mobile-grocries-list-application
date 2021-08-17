@@ -18,4 +18,7 @@
     <string name="k">/@ K</string>
     <string name="quantity">Quantity:</string>
     <string name="total_price">Total price:</string>
+    <string name="edit">edit</string>
+    <string name="totalAmount">Total Amount</string>
+    <string name="update">update</string>
 </resources>
