@@ -9,13 +9,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/itemName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="345dp"
+        android:layout_height="46dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         app:boxBackgroundColor="@color/design_default_color_surface"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,16 +34,11 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/price"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_width="269dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         app:boxBackgroundColor="@color/design_default_color_surface"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/itemName"
         app:layout_constraintTop_toBottomOf="@+id/itemName">
 
         <EditText
@@ -55,22 +50,16 @@
             android:hint="@string/add_price"
             android:inputType="numberDecimal"
             android:textColor="#2CD306"
-            android:textColorHint="#2CD306"/>
+            android:textColorHint="#2CD306" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtQuantity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_width="226dp"
+        android:layout_height="51dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         app:boxBackgroundColor="@color/design_default_color_surface"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.46"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/currency_spinner"
         app:layout_constraintTop_toBottomOf="@+id/price">
 
         <EditText
@@ -81,7 +70,7 @@
             android:hint="@string/add_quantity"
             android:inputType="number"
             android:textColor="#2CD306"
-            android:textColorHint="#2CD306"/>
+            android:textColorHint="#2CD306" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -93,7 +82,7 @@
         android:text="@string/save"
         android:textColor="@color/design_default_color_surface"
         app:backgroundTint="@color/green"
-        app:layout_constraintEnd_toEndOf="@+id/edtQuantity"
+        app:layout_constraintEnd_toEndOf="@+id/unit_spinner"
         app:layout_constraintStart_toStartOf="@+id/edtQuantity"
         app:layout_constraintTop_toBottomOf="@+id/edtQuantity" />
 
@@ -105,4 +94,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/savebtn" />
+
+    <Spinner
+        android:id="@+id/currency_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="@+id/price"
+        app:layout_constraintStart_toStartOf="@+id/itemName"
+        app:layout_constraintTop_toTopOf="@+id/price" />
+
+    <Spinner
+        android:id="@+id/unit_spinner"
+        android:layout_width="wrap_content"
+        android:dropDownWidth="wrap_content"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toBottomOf="@+id/edtQuantity"
+        app:layout_constraintEnd_toEndOf="@+id/price"
+        app:layout_constraintTop_toTopOf="@+id/edtQuantity"
+        app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

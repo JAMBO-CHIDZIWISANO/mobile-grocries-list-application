@@ -1,7 +1,6 @@
 package com.example.grocerieslistapp.adapter;
 
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -13,30 +12,23 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.grocerieslistapp.MainActivity;
 import com.example.grocerieslistapp.R;
-//import com.example.grocerieslistapp.UpdateGrocery;
 import com.example.grocerieslistapp.model.Groceries;
-import com.example.grocerieslistapp.model.GroceriesViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-//@SuppressWarnings("ALL")
-public class RecyclerViewApter extends RecyclerView.Adapter<RecyclerViewApter.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private final List<Groceries> groceriesList;
+
     private final OnRowClick rowClick;
 
-    //4
-    //int position;
-
     //constructor for recycler view adapter class
-    public RecyclerViewApter(List<Groceries> groceriesList, OnRowClick onRowClick) {
+    public RecyclerViewAdapter(List<Groceries> groceriesList, OnRowClick onRowClick) {
         this.groceriesList = groceriesList;
 
-        //this.listener = onRowClick;
         this.rowClick = onRowClick;
     }
 
@@ -49,6 +41,7 @@ public class RecyclerViewApter extends RecyclerView.Adapter<RecyclerViewApter.Vi
         //inflate the layout of our groceries row list
         View view = LayoutInflater.from( parent.getContext() )
                 .inflate( R.layout.groceries_row, parent, false );
+
         return new ViewHolder( view );
     }
 
@@ -62,35 +55,26 @@ public class RecyclerViewApter extends RecyclerView.Adapter<RecyclerViewApter.Vi
 
         //this.position = position;
         holder.groceries.setText( groceries.getItems() );
+
+        holder.currency.setText( groceries.getCurrency() );
+        holder.currency2.setText( groceries.getCurrency() );
+
         holder.price.setText( String.valueOf( groceries.getPrice() ) );
-        holder.quantity.setText( String.valueOf( groceries.getQuantity() ) );
+        holder.quantity.setText( String.valueOf( groceries.getQuantity()) );
+
+        holder.unit.setText( groceries.getUnit() );
+
+
         holder.totalItem.setText( String.valueOf( groceries.getPrice() * groceries.getQuantity() ) );
 
+        float totalAmount = groceries.getPrice() * groceries.getQuantity();
+        float sum = 0;
+        for (int i=0; i < groceriesList.size(); i++) {
 
-        //if (position == groceriesList.size()-1){
-        //    float totalCost = 0;
-         //   for(int i=0; i<groceriesList.size(); i++){
-                //totalCost = totalCost + groceries.getPrice();
-            //}
+            sum = sum + totalAmount;
 
-//        holder.amount.setText(  String.valueOf( totalCost ));
-       //}
-
-
-        //edit
-        //3
-//        holder.main_layout.setOnClickListener( new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent( MainActivity.class,UpdateGrocery.class);
-//                intent.putExtra( "id",  groceries.getItems() );
-//                intent.putExtra( "id", groceries.getPrice() );
-//                intent.putExtra( "id", groceries.getQuantity() );
-//                MainActivity.
-//
-//            }
-//        } );
+            return;
+        }
 
 
     }
@@ -109,16 +93,17 @@ public class RecyclerViewApter extends RecyclerView.Adapter<RecyclerViewApter.Vi
 
         // view holder class to create a variable for each view.
         public AppCompatTextView groceries;
+        public AppCompatTextView currency;
         public AppCompatTextView price;
         public AppCompatTextView quantity;
+        public AppCompatTextView unit;
         public AppCompatTextView totalItem;
 
         public AppCompatImageButton editbtn;
 
+        public AppCompatTextView currency2;
 
-        public AppCompatTextView totalAmount;
 
-        public AppCompatTextView amount;
 
         OnRowClick onRowClick;
 
@@ -127,30 +112,22 @@ public class RecyclerViewApter extends RecyclerView.Adapter<RecyclerViewApter.Vi
 
             // initializing each view of the recycler view.
             groceries = itemView.findViewById( R.id.grocery_name );
+            currency = itemView.findViewById( R.id.currency );
             price = itemView.findViewById( R.id.price );
             quantity = itemView.findViewById( R.id.quantity );
+            unit = itemView.findViewById( R.id.unit_view );
             totalItem = itemView.findViewById( R.id.totals );
+
             editbtn = itemView.findViewById( R.id.edit_grocery);
 
-            amount = itemView.findViewById( R.id.textView3 );
+            currency2 = itemView.findViewById( R.id.currency2 );
+
 
             this.onRowClick = rowClick;
 
 
+            editbtn.setOnClickListener( this );
 
-            //editbtn.setOnClickListener( this );
-            //2
-//            main_layout = itemView.findViewById( R.id.row );
-//
-//            itemView.setOnClickListener( new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int position = getAdapterPosition();
-//                    if (listener != null && position != RecyclerView.NO_POSITION) {
-//                        listener.editItem( getGroceriesAt( position ) );
-//                    }
-//                }
-//            } );
         }
 
         @Override
@@ -166,5 +143,6 @@ public class RecyclerViewApter extends RecyclerView.Adapter<RecyclerViewApter.Vi
 
 
 }
+
 
 

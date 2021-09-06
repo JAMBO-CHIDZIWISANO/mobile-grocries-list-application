@@ -28,21 +28,24 @@ public class GroceryRepository {
         return allGroceries;
     }
 
+
+
+
+
     //method that insert groceries into database
-    public void insert(Groceries groceries) {
+    public void insertGrocery(Groceries groceries) {
         GroceryRoomDatabase.databaseWriterExecutor.execute(
                 ()-> groceriesDao.insertGroceries( groceries ) );
     }
 
-    //
     public LiveData<Groceries> get(long id) {
         return groceriesDao.get( id );
     }
 
     //method to update groceries into database
-    public void update(Groceries groceries) {
+    public void updateGrocery(Groceries groceries) {
         GroceryRoomDatabase.databaseWriterExecutor.execute(
-                ()-> groceriesDao.update( groceries ) );
+                ()-> groceriesDao.updateGrocery( groceries ) );
     }
 
     //method that delete a specific grocery
@@ -52,16 +55,11 @@ public class GroceryRepository {
     }
 
     //method that delete all groceries from database
-    public void deleteAll() {
+    public void deleteAllGroceries() {
         GroceryRoomDatabase.databaseWriterExecutor.execute(
-                ()-> groceriesDao.deleteAll());
+                groceriesDao::deleteAllGroceryItems );
 
     }
-
-//    public void totalAmount(Groceries groceries) {
-//        GroceryRoomDatabase.databaseWriterExecutor.execute(
-//                () -> groceriesDao.totalAmount(groceries));
-//    }
 
 
 }

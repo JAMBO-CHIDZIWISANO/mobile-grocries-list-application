@@ -40,7 +40,7 @@ public abstract class GroceryRoomDatabase extends RoomDatabase {
                     databaseWriterExecutor.execute( () -> {
                         //invoke Dao and write
                         GroceriesDao groceriesDao = INSTANCE.groceriesDao();
-                        groceriesDao.deleteAll(); // clean state
+                        groceriesDao.deleteAllGroceryItems(); // clean state
 
                     } );
                 }

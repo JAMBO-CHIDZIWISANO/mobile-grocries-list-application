@@ -16,14 +16,15 @@ import java.util.List;
 @Dao
 public interface GroceriesDao {
 
-
-    //insert groceries into database
     @Insert
     void insertGroceries(Groceries groceries);
 
-    //delete all groceries in database
-    @Query( "DELETE FROM groceries_table" )
-    void deleteAll();
+
+    //get the list of all groceries from database
+
+
+    @Update
+    void updateGrocery(Groceries groceries);
 
     //get the list of all groceries from database
     @Query("SELECT * FROM groceries_table")
@@ -31,19 +32,21 @@ public interface GroceriesDao {
 
     //get a specific grocery from database
     @Query( "SELECT * FROM groceries_table " +
-            "WHERE groceries_table.Item_id ==:id" )
-    LiveData<Groceries> get(long id);
+            "WHERE groceries_table.Item_id ==:item_id" )
 
-    //update groceries in database
-    @Update
-    void update(Groceries groceries);
+    LiveData<Groceries> get(long item_id);
+
+    //delete all from grocery items table
+    @Query( "DELETE FROM groceries_table" )
+    void deleteAllGroceryItems();
 
     //delete specific grocery in database
     @Delete
     void delete(Groceries groceries);
 
 
+
     //@Query( "SELECT  SUM(Item_price * items_quantity) FROM groceries_table AS amount;" )
-    //void totalAmount( Groceries groceries);
+   // void totalAmount( float Item_price, int items_quantity);
 
 }

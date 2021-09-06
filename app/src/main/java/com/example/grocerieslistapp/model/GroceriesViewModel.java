@@ -33,18 +33,18 @@ public class GroceriesViewModel extends AndroidViewModel {
     }
 
     //method used to insert groceries into the repository
-    public static void insert(Groceries groceries) {
-        repository.insert( groceries );
+    public static void insertGrocery(Groceries groceries) {
+        repository.insertGrocery(groceries );
     }
 
     //method to get groceries id in the repository
-    public LiveData<Groceries> get(long id) {
-        return repository.get( id );
+    public LiveData<Groceries> get(long item_id) {
+        return repository.get( item_id );
     }
 
     //method for updating data in the repository
-    public static void update(Groceries groceries){
-        repository.update( groceries );
+    public static void updateGrocery(Groceries groceries){
+        repository.updateGrocery( groceries );
     }
 
     //method that delete specific grocery in repository
@@ -53,8 +53,8 @@ public class GroceriesViewModel extends AndroidViewModel {
     }
 
     //method that delete all groceries from the list
-    public static void deleteAll(){
-        repository.deleteAll();
+    public static void deleteAllGroceries(){
+        repository.deleteAllGroceries();
     }
 
 //    public static void totalAmount(Groceries groceries) {repository.totalAmount(groceries);}

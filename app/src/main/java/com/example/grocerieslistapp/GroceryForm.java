@@ -3,11 +3,8 @@ package com.example.grocerieslistapp;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.grocerieslistapp.data.GroceryRepository;
-//import com.example.grocerieslistapp.model.Groceries;
-//import com.example.grocerieslistapp.model.GroceriesViewModel;
+
 
 import com.example.grocerieslistapp.data.UpdateViewModel;
 import com.example.grocerieslistapp.model.Groceries;
@@ -56,14 +51,14 @@ public class GroceryForm extends BottomSheetDialogFragment {
         View view = inflater.inflate( R.layout.fragment_grocery_form, container, false );
 
         selectCurrency = view.findViewById( R.id.currency_spinner );
-        ArrayAdapter<String> currencyAdapter = new ArrayAdapter<String>(requireActivity(),
+        ArrayAdapter<String> currencyAdapter = new ArrayAdapter<>(requireActivity(),
                 android.R.layout.simple_list_item_1,
                 getResources().getStringArray( R.array.currency_spinners ));
         currencyAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
         selectCurrency.setAdapter( currencyAdapter );
 
         selectUnit = view.findViewById( R.id.unit_spinner );
-        ArrayAdapter<String> unitAdapter = new ArrayAdapter<String>(requireActivity(),
+        ArrayAdapter<String> unitAdapter = new ArrayAdapter<>(requireActivity(),
                 android.R.layout.simple_list_item_1,
                 getResources().getStringArray( R.array.unit_spinners ));
         unitAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
@@ -102,58 +97,59 @@ public class GroceryForm extends BottomSheetDialogFragment {
                 .get( UpdateViewModel.class );
 
 
-        savebtn.setOnClickListener( v -> {
+        savebtn.setOnClickListener( this::onClick );
+    }
 
-            //getting text value from edittext
-            String grocery = enterItems.getText().toString().trim();
-            String prices = enterPrices.getText().toString().trim();
-            String quantity =  enterQuantity.getText().toString().trim();
-            String currency = selectCurrency.getSelectedItem().toString().trim();
-            String unit = selectUnit.getSelectedItem().toString().trim();
+    private void onClick(View v) {
 
-            if (!grocery.equals( "" )&&!prices.equals( "" )&&!quantity.equals( "" )){
+        //getting text value from edittext
+        String grocery = enterItems.getText().toString().trim();
+        String prices = enterPrices.getText().toString().trim();
+        String quantity = enterQuantity.getText().toString().trim();
+        String currency = selectCurrency.getSelectedItem().toString().trim();
+        String unit = selectUnit.getSelectedItem().toString().trim();
 
-                Groceries groceries = new Groceries( grocery, currency, Float.parseFloat( prices ),
-                        Long.parseLong( quantity ), unit  );
+        if (!grocery.equals( "" ) && !prices.equals( "" ) && !quantity.equals( "" )) {
 
-                if (isEdit) {
-                    Groceries updateGroceries = updateViewModel.getSelectedGrocery().getValue();
-                    updateGroceries.setItems( grocery );
-                    updateGroceries.setCurrency( currency );
-                    updateGroceries.setPrice( Float.parseFloat( prices ) );
-                    updateGroceries.setQuantity( Long.parseLong( quantity ) );
-                    updateGroceries.setUnit( unit );
+            Groceries groceries = new Groceries( grocery, currency, Float.parseFloat( prices ),
+                    Long.parseLong( quantity ), unit );
 
-                    GroceriesViewModel.updateGrocery( updateGroceries );
+            if (isEdit) {
+                Groceries updateGroceries = updateViewModel.getSelectedGrocery().getValue();
+                assert updateGroceries != null;
+                updateGroceries.setItems( grocery );
+                updateGroceries.setCurrency( currency );
+                updateGroceries.setPrice( Float.parseFloat( prices ) );
+                updateGroceries.setQuantity( Long.parseLong( quantity ) );
+                updateGroceries.setUnit( unit );
 
-                    enterItems.setText( "" );
-                    enterPrices.setText( "" );
-                    enterQuantity.setText( "" );
-
-                    dismiss();
-                    Toast.makeText( requireActivity(), "successfully updated", Toast.LENGTH_SHORT ).show();
-
-                    updateViewModel.setIsEdit( false );
-                } else {
-                    GroceriesViewModel.insertGrocery( groceries );
-                    enterItems.setText( "" );
-                    enterPrices.setText( "" );
-                    enterQuantity.setText( "" );
-
-                    //dismiss();
-                    Toast.makeText( requireActivity(), "successfully saved", Toast.LENGTH_SHORT ).show();
-                }
+                GroceriesViewModel.updateGrocery( updateGroceries );
 
                 enterItems.setText( "" );
+                enterPrices.setText( "" );
+                enterQuantity.setText( "" );
 
+                dismiss();
+                Toast.makeText( requireActivity(), "successfully updated", Toast.LENGTH_SHORT ).show();
 
+                updateViewModel.setIsEdit( false );
             } else {
-                Toast.makeText( requireActivity(), "Incomplete information", Toast.LENGTH_LONG ).show();
+                GroceriesViewModel.insertGrocery( groceries );
+                enterItems.setText( "" );
+                enterPrices.setText( "" );
+                enterQuantity.setText( "" );
+
+                //dismiss();
+                Toast.makeText( requireActivity(), "successfully saved", Toast.LENGTH_SHORT ).show();
             }
 
+            enterItems.setText( "" );
 
 
+        } else {
+            Toast.makeText( requireActivity(), "Incomplete information", Toast.LENGTH_LONG ).show();
+        }
 
-        });
+
     }
 }

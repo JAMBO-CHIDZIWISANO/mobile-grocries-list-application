@@ -28,13 +28,11 @@
                 android:id="@+id/grocery_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="3dp"
-                android:fontFamily="sans-serif"
                 android:text="@string/jambo"
                 android:textColor="#0BA694"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintStart_toStartOf="@+id/textView"
@@ -46,9 +44,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
-                android:fontFamily="sans-serif-black"
+                android:text="jambo"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView"
                 app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toTopOf="@+id/textView"
@@ -56,48 +54,30 @@
                 tools:ignore="MissingConstraints" />
 
             <!--suppress AndroidDomInspection -->
+
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/currency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:fontFamily="sans-serif"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
                 android:text="@ K"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/quantity"
-                app:layout_constraintStart_toEndOf="@+id/quantity"
-                app:layout_constraintTop_toTopOf="@+id/quantity"
-                app:layout_constraintVertical_bias="0.0" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/priceholder"
+                app:layout_constraintStart_toEndOf="@+id/priceholder"
+                app:layout_constraintTop_toTopOf="@+id/priceholder" />
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:fontFamily="sans-serif-black"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView2"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="@+id/textView2"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginLeft="12dp"
-                android:fontFamily="serif"
-                android:text="@string/each"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/price"
-                app:layout_constraintStart_toEndOf="@+id/price"
-                app:layout_constraintTop_toTopOf="@+id/price"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/currency"
+                app:layout_constraintStart_toEndOf="@+id/currency"
+                app:layout_constraintTop_toTopOf="@+id/currency"
                 app:layout_constraintVertical_bias="0.0" />
 
             <!--suppress AndroidDomInspection -->
@@ -109,12 +89,11 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="4dp"
-                android:fontFamily="serif"
                 android:includeFontPadding="false"
                 android:text="@string/quantity"
                 android:textColor="@color/black"
                 android:textColorLink="#1ABFB0"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/total_price"
                 app:layout_constraintStart_toEndOf="@+id/checkBox" />
 
@@ -122,10 +101,9 @@
                 android:id="@+id/total_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="serif"
                 android:text="@string/total_price"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView" />
 
@@ -133,24 +111,24 @@
                 android:id="@+id/totals"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="sans-serif"
                 android:text="TextView"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/total_price"
-                app:layout_constraintStart_toEndOf="@+id/total_price"
-                app:layout_constraintTop_toTopOf="@+id/total_price" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/currency2"
+                app:layout_constraintStart_toEndOf="@+id/currency2"
+                app:layout_constraintTop_toBottomOf="@+id/quantity" />
 
             <ImageButton
                 android:id="@+id/edit_grocery"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:background="@color/white"
                 android:contentDescription="@string/edit"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.675"
-                app:layout_constraintStart_toEndOf="@+id/textView3"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_edit_grocery"
                 tools:ignore="VectorDrawableCompat" />
@@ -163,6 +141,43 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.405" />
+
+            <TextView
+                android:id="@+id/unit_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/quantity"
+                app:layout_constraintStart_toEndOf="@+id/quantity"
+                app:layout_constraintTop_toTopOf="@+id/quantity" />
+
+            <TextView
+                android:id="@+id/priceholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:text="Price:"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/unit_view"
+                app:layout_constraintStart_toEndOf="@+id/unit_view"
+                app:layout_constraintTop_toTopOf="@+id/unit_view" />
+
+            <TextView
+                android:id="@+id/currency2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="6dp"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/total_price"
+                app:layout_constraintStart_toEndOf="@+id/total_price"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
